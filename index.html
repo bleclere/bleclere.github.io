@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hello, World</title>
+    <title>Hello, World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+
+     * {
+	 font-family: "PT Serif"
+     }
+
+     body {
+	 background-color: teal;
+     }
+     
+
+     .btn {
+	 background-color: white;
+	 border: 2px solid #181818;
+     }
+
+     .left {
+	 border-radius: 10px 0px 0px 10px;
+     }
+
+     .right {
+	 border-radius: 0px 10px 10px 0px;
+     }
+     
+     
+    </style>
 </head>
 
 <body>
-	<h1>Hello, World</h1>
+    <button class="left btn" disabled>FR</button><button class="right btn">EN</button></div>
+    <h1 class="en">Under semi active construction</h1>
+    <h1 class="fr">Site en construction semi-active</h1>
+    <p class="fr">Le but de ce site est d’archiver et de partager différentes informations qui me sont apparues comme utiles dans mon travail ou mes hobbies, mais aussi et peut-être surtout pour me donner une raison de garder en la main en HTML, CSS et Javascript. Ne pas s’attendre à des mises à jour régulières...</p>
+    <p class="en">The goal of this website is to archive and share different pieces of info that appeared as useful for my job or my hobbies, but also (and probably primarily) its goal is give me a reason to keep praticing HTML, CSS and Javascript. Don't expect regular updates…</p>
 </body>
+
+<script>
+
+ let language = 0 // 0 pour français, 1 pour anglais
+ 
+ const left_button = document.getElementsByClassName("left")[0];
+ const right_button = document.getElementsByClassName("right")[0];
+
+ const fr_elements = document.querySelectorAll(".fr");
+ const en_elements = document.querySelectorAll(".en");
+
+ function change_lang() {
+     if (language === 0) {
+	 fr_elements.forEach(el => el.style.display = "block");
+	 en_elements.forEach(el => el.style.display = "none");
+	 left_button.disabled = true;
+	 right_button.disabled = false;
+     } else {
+	 fr_elements.forEach(el => el.style.display = "none");
+	 en_elements.forEach(el => el.style.display = "block");
+	 left_button.disabled = false;
+	 right_button.disabled = true;
+	 language = 0;
+     }
+ }
+
+ left_button.addEventListener("click", () => {
+     language = 0;
+     change_lang();
+ });
+
+ right_button.addEventListener("click", () => {
+     language = 1;
+     change_lang();
+ });
+
+ change_lang();
+ 
+ 
+ 
+</script>
 </html>
